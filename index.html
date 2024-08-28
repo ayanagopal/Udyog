@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Light Mode/Dark Mode</h1>
+        <div class="paragraph" contenteditable="true">
+           Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+           aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+           Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni
+           dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
+           sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore
+           magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+           suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+           ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+           nulla pariatur?
+        </div>
+        <button class="toggle-btn" id="toggle-btn">
+            <span>Dark Mode</span>
+        </button>
+        <button class="upper">
+            <span>Upper Case</span>
+        </button>
+        <button class="lower">
+            <span>Lower Case</span>
+        </button>
+        <button class="font">
+            <span>Change Font</span>
+        </button>
+        <button class="color">
+            <span>Change color</span>
+        </button>
+        <!-- <button class="high">
+            <span>Highlighter</span>
+        </button> -->
+        <button class="remove">
+            <span>Remove</span>
+        </button>
+        
+        <button class="reset">
+            <span>Reset</span>
+        </button>
+
+        <script>
+            $(document).ready(function () {
+             
+                $("#toggle-btn").click(function () {
+                    $("body").toggleClass("change-background");
+                    savePreferences();
+                });
+
+                $(".upper").click(function () {
+                    $(".paragraph").css("text-transform", "uppercase");
+                    savePreferences();
+                });
+
+                
+                $(".lower").click(function () {
+                    $(".paragraph").css("text-transform", "lowercase");
+                    savePreferences();
+                });
+
+                $(".font").click(function () {
+                    $(".paragraph").toggleClass("fonts");
+                    savePreferences();
+                });
+
+             
+                $(".color").click(function () {
+                    $(".paragraph").toggleClass("cols");
+                    savePreferences();
+                });
+
+                // Highlighter for selected text
+                $(".high").click(function () {
+                    let selectedText = window.getSelection().toString();
+                    if (selectedText) {
+                        document.execCommand("hiliteColor", false, "yellow");
+                        savePreferences();
+                    }
+                });
+
+               
+                $(".remove").click(function () {
+                    $(".paragraph").text("");
+                    savePreferences();
+                });
+
+               
+                $(".reset").click(function () {
+                    resetPreferences();
+                });
+
+                // Save user preferences in local storage
+                function savePreferences() {
+                    const preferences = {
+                        mode: $("body").hasClass("change-background"),
+                        upperCase: $(".paragraph").css("text-transform") === "uppercase",
+                        fontChanged: $(".paragraph").hasClass("fonts"),
+                        colorChanged: $(".paragraph").hasClass("cols"),
+                    };
+                    localStorage.setItem("userPreferences", JSON.stringify(preferences));
+                }
+
+                // Load user preferences from local storage
+                function loadPreferences() {
+                    const preferences = JSON.parse(localStorage.getItem("userPreferences"));
+                    if (preferences) {
+                        if (preferences.mode) $("body").addClass("change-background");
+                        if (preferences.upperCase) $(".paragraph").css("text-transform", "uppercase");
+                        if (preferences.fontChanged) $(".paragraph").addClass("fonts");
+                        if (preferences.colorChanged) $(".paragraph").addClass("cols");
+                    }
+                }
+
+                // Reset preferences to default
+                function resetPreferences() {
+                    // Clear local storage
+                    localStorage.removeItem("userPreferences");
+
+                    // Remove applied classes and styles
+                    $("body").removeClass("change-background");
+                    $(".paragraph").removeClass("fonts cols").css("text-transform", "");
+                }
+
+                // Load preferences when the document is ready
+                loadPreferences();
+            });
+        </script>
+    </div>
+</body>
+</html>

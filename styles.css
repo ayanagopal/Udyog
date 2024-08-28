@@ -1,79 +1,178 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+    margin: 0;
+    padding: 0;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: aliceblue;
+    font-family: "source sans pro", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.container button{
+    width: 150px; /* Set a fixed width for all buttons */
+            height: 40px; /* Set a fixed height for all buttons */
+            margin-bottom: 10px; /* Space between buttons */
+            font-size: 14px; /* Font size */
+            cursor: pointer;
 }
 
 h1 {
-    margin-bottom: 20px; 
+    padding: 20px;
     text-align: center;
+    font-size: 40px;
 }
 
-.carousel {
-    position: relative;
-    width: 80%;
-    max-width: 600px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item {
-    min-width: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-item img {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-}
-
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
+.paragraph {
+    height: 70%;
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 20px;
+    text-align: justify;
     cursor: pointer;
-    font-size: 2rem;
-    z-index: 1000;
 }
 
-.carousel-control.prev {
-    left: 10px;
+.toggle-btn {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    color: antiquewhite;
+    background-color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid navy;
+    border-radius: 5px;
+    cursor: pointer
 }
 
-.carousel-control.next {
-    right: 10px;
+.upper{
+    position: fixed;
+    top:90px;
+    right: 40px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(203, 148, 255);
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px 20px;
+    font-weight: 600;
 }
 
- h1{
-    display: block;
-    justify-self: center;
-    text-align: center;
+.font{
+    position: fixed;
+    top:190px;
+    right: 40px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    background-color: #BB8493;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #49243E;
+    padding: 10px 20px;
 }
 
-/* Touch screen adjustments */
-@media (max-width: 600px) {
-    .carousel-control {
-        font-size: 1.5rem;
-        padding: 5px;
-    }
+
+.lower{
+    position: fixed;
+    top:140px;
+    right: 40px;
+    color:#ffffff;
+    font-weight: 600;
+    background-color:#6EACDA;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #03346E;
+    padding: 10px 20px;
 }
+
+.color{
+    position: fixed;
+    top:245px;
+    right: 40px;
+    color:#ffffff;
+    font-weight: 600;
+    background-color: #EB3678;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #FB773C;
+    padding: 10px 20px;
+}
+.high{
+    position: fixed;
+    top:300px;
+    right: 40px;
+    color:#ffffff;
+    font-weight: 600;
+    background-color: #AD49E1;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #2E073F;
+    padding: 10px 20px;
+}
+
+.remove{
+    position: fixed;
+    top:300px;
+    right: 40px;
+    color:#ffffff;
+    font-weight: 600;
+    background-color: #BED754;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #750E21;
+    padding: 10px 20px;
+}
+
+.reset{
+    position: fixed;
+    top:360px;
+    right: 40px;
+    color:#ffffff;
+    font-weight: 600;
+    background-color:#E95793;
+    border-radius: 5px;
+    font-size: 16px;
+    border: 1px solid #610C9F;
+    padding: 10px 20px;
+}
+
+
+.toggle-btn i {
+    padding-left: 10px;
+
+}
+
+body.change-background {
+    color: bisque;
+    background-color: #000000;
+}
+
+.caps{
+    text-transform: uppercase;
+}
+
+.lows{
+    text-transform: lowercase;
+}
+
+.fonts{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.cols{
+    color: blue;
+}
+
+.highlighter{
+    color: #FF90BC;
+    /* cursor: pointer; */
+}
+
